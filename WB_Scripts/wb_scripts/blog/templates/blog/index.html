@@ -1,0 +1,59 @@
+{% extends "blog/base.html" %}
+{% block title %}Сайт{% endblock %}
+{% block content %}
+    <section class="al mt-3">
+        <div class="container justify-content-center">
+            <div class="alert alert-dismissible alert-warning">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <h4 class="alert-heading">Внимание!</h4>
+                <h5 class="mb-0">Сайт находится в процессе доработки и наполнения.
+                    Большая просьба, если заметили ошибку, неточность или что-то необходимо добавить -
+                    оставьте сообщение в форме "Оставить отзыв", которая находится выше. Спасибо.</h5>
+            </div>
+        </div>
+    </section>
+
+    <section class="categories">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-sm-12 cat-block">
+                    <div class="row">
+                        {% block categories %}
+                            {% include "blog/index/categories.html" with category_list=category_list %}
+                        {% endblock %}
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12">
+                    <div class="row">
+                        <h2 class="mb-3">Самые популярные</h2>
+                        {% block most_viewed %}
+                            {% include "blog/index/most_viewed_posts.html" %}
+                        {% endblock %}
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12">
+                    <div class="row">
+                        <h2 class="mb-3">Последние открытые</h2>
+                        {% block recently_visited %}
+                            {% include "blog/index/recently_visited_posts.html" %}
+                        {% endblock %}
+                    </div>
+                </div>
+                <div class="col-12 line"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="recently">
+        <div class="container">
+            <div class="row">
+                <h2 class="mt-3">Последние обновлённые материалы</h2>
+                <div class="row row-cols-lg-4 row-cols-sm-1 g-2">
+                    {% block recently_updated %}
+                        {% include "blog/index/recently_updated_posts.html" %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+
+  db:
+    image: postgres:15.2
+    restart: always
+    environment:
+      - POSTGRES_USER=db_user
+      - POSTGRES_PASSWORD=db_password
+      - POSTGRES_DB=wb_scripts_db
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - ./postgres-db:/var/lib/postgresql/data
+
+  web:
+    build: ./WB_Scripts
+    command: [ "./WB_Scripts/wait-for-it.sh", "db:5432", "--", "uwsgi", "--ini", "/code/config/uwsgi/uwsgi.ini" ]
+    restart: always
+    volumes:
+      - .:/code
+    environment:
+      - DJANGO_SETTINGS_MODULE=wb_scripts.settings.prod
+      - POSTGRES_DB=wb_scripts_db
+      - POSTGRES_USER=db_user
+      - POSTGRES_PASSWORD=db_password
+    depends_on:
+      - db
+
+  nginx:
+    image: nginx:1.25.0
+    restart: always
+    volumes:
+      - ./config/nginx:/etc/nginx/templates
+      - .:/code
+    ports:
+      - "80:80"
+      - "443:443"
+
+  bot:
+    build: ./WB_Scripts_Bot
+    restart: always
+    environment:
+      - BOT_TOKEN=token
+      - ADMIN_ID=id

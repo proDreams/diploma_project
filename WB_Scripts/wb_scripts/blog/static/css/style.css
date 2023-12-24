@@ -1,0 +1,240 @@
+[data-bs-theme=light] {
+    --black-white-text: #000;
+    --bs-blue: #2c3e50;
+    --bs-indigo: #6610f2;
+    --bs-purple: #6f42c1;
+    --bs-pink: #e83e8c;
+    --bs-red: #e74c3c;
+    --bs-orange: #fd7e14;
+    --bs-yellow: #f39c12;
+    --bs-green: #18bc9c;
+    --bs-teal: #20c997;
+    --bs-cyan: #3498db;
+    --bs-black: #000;
+    --bs-white: #fff;
+    --bs-gray: #95a5a6;
+    --bs-gray-dark: #343a40;
+    --bs-gray-100: #f8f9fa;
+    --bs-gray-200: #ecf0f1;
+    --bs-gray-300: #dee2e6;
+    --bs-gray-400: #ced4da;
+    --bs-gray-500: #b4bcc2;
+    --bs-gray-600: #95a5a6;
+    --bs-gray-700: #7b8a8b;
+    --bs-gray-800: #343a40;
+    --bs-gray-900: #212529;
+    --bs-primary: #2c3e50;
+    --bs-secondary: #95a5a6;
+    --bs-success: #18bc9c;
+    --bs-info: #3498db;
+    --bs-warning: #f39c12;
+    --bs-danger: #e74c3c;
+    --bs-light: #ecf0f1;
+    --bs-dark: #7b8a8b;
+    --bs-primary-rgb: 44, 62, 80;
+    --bs-secondary-rgb: 149, 165, 166;
+    --bs-success-rgb: 24, 188, 156;
+    --bs-info-rgb: 52, 152, 219;
+    --bs-warning-rgb: 243, 156, 18;
+    --bs-danger-rgb: 231, 76, 60;
+    --bs-light-rgb: 236, 240, 241;
+    --bs-dark-rgb: 123, 138, 139;
+    --bs-white-rgb: 255, 255, 255;
+    --bs-black-rgb: 0, 0, 0;
+    --bs-body-color-rgb: 33, 37, 41;
+    --bs-body-bg-rgb: 255, 255, 255;
+    --bs-font-sans-serif: Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+    --bs-body-font-family: var(--bs-font-sans-serif);
+    --bs-body-font-size: 1rem;
+    --bs-body-font-weight: 400;
+    --bs-body-line-height: 1.5;
+    --bs-body-color: #212529;
+    --bs-body-bg: #fff;
+    --bs-border-width: 1px;
+    --bs-border-style: solid;
+    --bs-border-color: #212529;
+    --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
+    --bs-border-radius: 0.375rem;
+    --bs-border-radius-sm: 0.25rem;
+    --bs-border-radius-lg: 0.5rem;
+    --bs-border-radius-xl: 1rem;
+    --bs-border-radius-2xl: 2rem;
+    --bs-border-radius-pill: 50rem;
+    --bs-link-color: #18bc9c;
+    --bs-link-hover-color: #13967d;
+    --bs-code-color: #e83e8c;
+    --bs-highlight-bg: #fdebd0;
+    --bs-link-color-rgba: 255, 255, 255;
+    --bs-link-opacity: 1;
+}
+
+[data-bs-theme=dark] {
+    --black-white-text: #fff;
+    --bs-blue: #375a7f;
+    --bs-indigo: #6610f2;
+    --bs-purple: #6f42c1;
+    --bs-pink: #e83e8c;
+    --bs-red: #e74c3c;
+    --bs-orange: #fd7e14;
+    --bs-yellow: #f39c12;
+    --bs-green: #00bc8c;
+    --bs-teal: #20c997;
+    --bs-cyan: #3498db;
+    --bs-black: #000;
+    --bs-white: #fff;
+    --bs-gray: #888;
+    --bs-gray-dark: #303030;
+    --bs-gray-100: #f8f9fa;
+    --bs-gray-200: #ebebeb;
+    --bs-gray-300: #dee2e6;
+    --bs-gray-400: #ced4da;
+    --bs-gray-500: #adb5bd;
+    --bs-gray-600: #888;
+    --bs-gray-700: #444;
+    --bs-gray-800: #303030;
+    --bs-gray-900: #222;
+    --bs-primary: #375a7f;
+    --bs-secondary: #444;
+    --bs-success: #00bc8c;
+    --bs-info: #3498db;
+    --bs-warning: #f39c12;
+    --bs-danger: #e74c3c;
+    --bs-light: #adb5bd;
+    --bs-dark: #303030;
+    --bs-primary-rgb: 55, 90, 127;
+    --bs-secondary-rgb: 68, 68, 68;
+    --bs-success-rgb: 0, 188, 140;
+    --bs-info-rgb: 52, 152, 219;
+    --bs-warning-rgb: 243, 156, 18;
+    --bs-danger-rgb: 231, 76, 60;
+    --bs-light-rgb: 48, 48, 48;
+    --bs-dark-rgb: 48, 48, 48;
+    --bs-white-rgb: 255, 255, 255;
+    --bs-black-rgb: 0, 0, 0;
+    --bs-body-color-rgb: 255, 255, 255;
+    --bs-body-bg-rgb: 34, 34, 34;
+    --bs-font-sans-serif: Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+    --bs-body-font-family: var(--bs-font-sans-serif);
+    --bs-body-font-size: 1rem;
+    --bs-body-font-weight: 400;
+    --bs-body-line-height: 1.5;
+    --bs-body-color: #fff;
+    --bs-body-bg: #222;
+    --bs-border-width: 1px;
+    --bs-border-style: solid;
+    --bs-border-color: #dee2e6;
+    --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
+    --bs-border-radius: 0.375rem;
+    --bs-border-radius-sm: 0.25rem;
+    --bs-border-radius-lg: 0.5rem;
+    --bs-border-radius-xl: 1rem;
+    --bs-border-radius-2xl: 2rem;
+    --bs-border-radius-pill: 50rem;
+    --bs-link-color: #00bc8c;
+    --bs-link-hover-color: #009670;
+    --bs-code-color: #e83e8c;
+    --bs-highlight-bg: #fdebd0;
+    --bs-link-color-rgba: 110, 168, 254;
+    --bs-link-opacity: 1;
+}
+
+.my-me-5r {
+    margin-right: 5rem !important
+}
+
+.color1 {
+    color: var(--bs-primary-text)
+}
+
+.color2 {
+    color: var(--black-white-text)
+}
+
+.card-header a {
+    color: rgba(var(--bs-link-color-rgba), var(--bs-link-opacity, 1));
+}
+
+.cat-block h5 {
+    padding: 25px;
+    /*border: 3px solid var(--bs-gray);*/
+    border: 1px solid var(--bs-border-color);
+    border-radius: var(--bs-border-radius)
+}
+
+.categories h2, .post h2, .breadcrumb {
+    padding-top: 15px;
+}
+
+.categories a, a:visited, .recently a, a:visited {
+    text-decoration: none;
+}
+
+.categories a:hover, .recently a:hover {
+    text-decoration: none;
+}
+
+.line {
+    width: 100%;
+    height: 3px;
+    background-color: var(--bs-primary);
+    margin: 15px auto 0;
+}
+
+.form-check-input {
+    margin: 0;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: 0;
+    margin: 0;
+}
+
+.icons::before {
+    content: url(../svg/moon-stars-fill.svg);
+    width: 18px;
+    height: 18px;
+    margin-right: 3px;
+}
+
+.form-check-label {
+    content: url(../svg/sun-fill.svg);
+    width: 18px;
+    height: 18px;
+    margin-left: 5px;
+    filter: invert(1);
+}
+
+.form-switch .form-check-input {
+    margin: 0;
+}
+
+.op-reg u {
+    color: var(--bs-white);
+    background-color: var(--bs-gray);
+}
+
+code {
+    color: var(--bs-primary-text)
+}
+
+.copy-clipboard {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+}
+
+.footer-border {
+    border-top: 1px solid var(--bs-primary);
+}
+
+/*.rec-bord {*/
+/*    padding: 25px;*/
+/*    border: 3px solid var(--bs-gray);*/
+/*}*/

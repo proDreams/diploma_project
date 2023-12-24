@@ -1,0 +1,8 @@
+{% block categories %}
+    <h2 class="mb-3">Категории</h2>
+    {% for category in category_list %}
+        <div class="col-sm-12">
+            <h5><a href={{ category.get_absolute_url }}>{{ category.title }}</a></h5>
+        </div>
+    {% endfor %}
+{% endblock %}

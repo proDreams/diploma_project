@@ -1,0 +1,15 @@
+{% block post_list %}
+    {% for post in posts_list %}
+        <div class="col-sm-12 mb-3">
+            <h4>
+                <a href="{{ post.get_absolute_url }}">
+                    {{ post.title }}
+                </a>
+            </h4>
+            <p class="date">
+                {{ post.author }} добавил {{ post.publish }}
+            </p>
+            {{ post.body|truncatewords:20|linebreaks }}
+        </div>
+    {% endfor %}
+{% endblock %}

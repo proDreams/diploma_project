@@ -1,0 +1,68 @@
+{% extends "blog/base.html" %}
+{% block title %}{{ news.title }}{% endblock %}
+{% block content %}
+    <section class="news">
+        <div class="container">
+            <div class="row mt-3">
+                <div class="col-lg-9 col-sm-12">
+                    <h3 class="mt-3">{{ news.title }}</h3>
+                    <p class="date">Опубликовано: {{ news.publish }}
+                        <br>
+                        Обновлено: {{ news.updated }}
+                        <br>
+                        Просмотров: {{ news.view_count }}</p>
+                    {{ news.body | safe }}
+                </div>
+                <div class="col-lg-3 col-sm-12">
+                    <h3 class="mt-3">Связанные материалы</h3>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#CreateNewsAndPostLink">
+                        Добавить связанный материал
+                    </button>
+                    {% if related_post_list %}
+                        {% for related_post in related_post_list %}
+                            <div class="row-cols-sm-1 g-4 mt-3">
+                                <div class="card color2 mb-3 mx-1" style="max-width: 70rem;">
+                                    <div class="card-header text-white bg-secondary "><h4 class="card-title"><a
+                                            href="{{ related_post.post.get_absolute_url }}">{{ related_post.post.title }}</a>
+                                    </h4>
+                                        <p class="date">Добавлен: {{ related_post.post.publish }}</p>
+                                    </div>
+                                    <div class="card-body bg-light">
+                                        <p class="card-text">{{ related_post.post.description | truncatewords:20 }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p class="mt-3">Связанных материалов нет</p>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="modal fade" id="CreateNewsAndPostLink" tabindex="-1" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Добавить связанный материал</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="." method="post" class="form">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                            <button type="submit" class="btn btn-primary">Отправить</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

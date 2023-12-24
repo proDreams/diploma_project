@@ -1,0 +1,11 @@
+{% block post_list %}
+        {% for post in posts_list %}
+            <div class="card color2 mb-3 mx-1" style="max-width: 70rem;">
+                <div class="card-header text-white bg-secondary "><h4 class="card-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
+                    Добавлено: {{ post.publish }}</div>
+                <div class="card-body bg-light">
+                    <p class="card-text">{{ post.description|truncatewords:30|linebreaks }}</p>
+                </div>
+            </div>
+        {% endfor %}
+{% endblock %}

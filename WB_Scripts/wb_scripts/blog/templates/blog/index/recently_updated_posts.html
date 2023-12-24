@@ -1,0 +1,19 @@
+{% block recently_updated %}
+    {% for recently_post in recently_upd_posts_list %}
+        <div class="col">
+            <div class="card color2 mb-3 mx-1" style="max-width: 70rem;">
+                <div class="card-header text-white bg-secondary "><h4 class="card-title"><a
+                        href="{{ recently_post.get_absolute_url }}">{{ recently_post.title }}</a></h4>
+                    {% if recently_post.updated > recently_post.publish %}
+                        <p class="date">Обновлён: {{ recently_post.updated }}</p>
+                    {% else %}
+                        <p class="date">Добавлен: {{ recently_post.publish }}</p>
+                    {% endif %}</div>
+                <div class="card-body bg-light">
+                    <p class="card-text">{{ recently_post.description|truncatewords:30|linebreaks }}</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
+

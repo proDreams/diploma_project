@@ -1,0 +1,122 @@
+{% extends "blog/base.html" %}
+{% block title %}{{ post.title }}{% endblock %}
+{% block content %}
+    <section class="post">
+        <div class="container">
+            <div class="row">
+                <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
+                     aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Главная</a></li>
+                        <li class="breadcrumb-item"><a href="{{ post.category.get_absolute_url }}">{{ post.category.title }}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ post.title }}</li>
+                    </ol>
+                </nav>
+                <h3>{{ post.title }}</h3>
+                <p class="mt-1"> {{ post.description }}</p>
+                <p>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#CreatePostAndNewsLink">
+                        Добавить связанную новость
+                    </button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#CreateScript">
+                        Добавить скрипт
+                    </button>
+                </p>
+            </div>
+            <ul class="nav nav-tabs mt-3" role="tablist">
+                <li class="nav-item" role="presentation">
+                    {% if related_news_list.number == 1 %}
+                        <a class="nav-link active" data-bs-toggle="tab" href="#home" aria-selected="true" role="tab">Скрипты
+                            и регистрация обращений</a>
+                    {% else %}
+                        <a class="nav-link" data-bs-toggle="tab" href="#home" aria-selected="false" role="tab">Скрипты и
+                            регистрация обращений</a>
+                    {% endif %}
+                </li>
+                <li class="nav-item" role="presentation">
+                    {% if related_news_list.number != 1 %}
+                        <a class="nav-link active" data-bs-toggle="tab" href="#profile" aria-selected="true" role="tab">Новости
+                            по теме</a>
+                    {% else %}
+                        <a class="nav-link" data-bs-toggle="tab" href="#profile" aria-selected="false" role="tab">Новости
+                            по теме</a>
+                    {% endif %}
+                </li>
+            </ul>
+
+            <div id="myTabContent" class="tab-content mt-3">
+                {% if related_news_list.number == 1 %}
+                    <div class="tab-pane fade active show" id="home" role="tabpanel">
+                {% else %}
+                    <div class="tab-pane fade" id="home" role="tabpanel">
+                {% endif %}
+                <div class="row row-cols-lg-3 row-cols-sm-1 g-2">
+                    {% block scripts %}
+                        {% include "blog/post/scripts.html" %}
+                    {% endblock %}
+
+
+                </div>
+                </div>
+
+                {% if related_news_list.number != 1 %}
+                    <div class="tab-pane fade active show" id="profile" role="tabpanel">
+                {% else %}
+                    <div class="tab-pane fade" id="profile" role="tabpanel">
+                {% endif %}
+
+                {% block news %}
+                    {% include "blog/post/news.html" %}
+                {% endblock %}
+
+                </div>
+                </div>
+                </div>
+    </section>
+
+    <div class="modal fade" id="CreatePostAndNewsLink" tabindex="-1" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Добавить связанную новость</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="." method="post" class="form">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                            <button type="submit" class="btn btn-primary">Отправить</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="CreateScript" tabindex="-1" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Добавить новый скрипт</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="." method="post" class="form">
+                        {% csrf_token %}
+                        {{ form2.as_p }}
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                            <button type="submit" class="btn btn-primary">Отправить</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "blog/base.html" %}
+{% block title %}Результаты по запросу: {{ search_post }}{% endblock %}
+{% block content %}
+    <section class="search">
+        <div class="container">
+            <h3 class="mt-3">Результаты по запросу: {{ search_post }}</h3>
+            <div class="row">
+                <div class="row row-cols-lg-4 row-cols-sm-1 g-4">
+                    {% if results %}
+                        {% for result in results %}
+                            {% if result.ModelType.model_type == 'post' %}
+                                <div class="col">
+                                    <div class="card color2 mb-3 mx-1" style="max-width: 70rem;">
+                                        <div class="card-header text-white bg-secondary "><h4 class="card-title"><a
+                                                href="{{ result.get_absolute_url }}">{{ result.title }}</a></h4>
+                                            Обновлено: {{ result.updated }}</div>
+                                        <div class="card-body bg-light">
+                                            <p class="card-text">{{ result.description|truncatewords:30|linebreaks }}</p>
+                                        </div>
+                                        <div class="card-footer">
+                                            <u>Материал</u>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% elif result.ModelType.model_type == 'news' %}
+                                <div class="col">
+                                    <div class="card color2 mb-3 mx-1" style="max-width: 70rem;">
+                                        <div class="card-header text-white bg-secondary "><h4 class="card-title"><a
+                                                href="{{ result.get_absolute_url }}">{{ result.title }}</a></h4>
+                                            Обновлено: {{ result.updated }}</div>
+                                        <div class="card-body bg-light">
+                                            <p class="card-text">{{ result.body|safe|truncatewords:30|linebreaks }}</p>
+                                        </div>
+                                        <div class="card-footer">
+                                            <u>Новость</u>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% elif result.ModelType.model_type == 'script' %}
+                                <div class="col">
+                                    <div class="card color2 mb-3 mx-1" style="max-width: 70rem;">
+                                        <div class="card-header text-white bg-secondary "><h4 class="card-title"><a
+                                                href="{{ result.post.get_absolute_url }}">{{ result.title }}</a></h4>
+                                            В материале: {{ result.post.title }}
+                                        </div>
+                                        <div class="card-body bg-light">
+                                            <p class="card-text">{{ result.script|safe|truncatewords:30|linebreaks }}</p>
+                                        </div>
+                                        <div class="card-footer">
+                                            <u>Скрипт</u>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        <p>Нет результатов</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-12">
+                {% include "blog/pagination.html" with page=results %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% block scripts %}
+    {% if related_scripts_for_post %}
+        {% for related_scripts in related_scripts_for_post %}
+
+            {% if related_scripts.type == 'SC' %}
+                <div class="col">
+                    <div class="card color2 mb-3 mx-1" style="max-width: 40rem;">
+                        <div class="card-header text-white bg-secondary ">
+                            <h4 class="card-title">{{ related_scripts.title }}</h4>
+                        </div>
+                        <div class="card-body bg-light">
+                            <p class="card-text copy-clipboard">
+                                <code>{{ related_scripts.script }}</code>
+                                <button title="Скопировать"
+                                        class="btn btn-outline-secondary btn-sm shadow-none mt-3 bg-light">Копировать
+                                </button>
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <u class="text-white">{{ related_scripts.operation }}</u>
+                        </div>
+                    </div>
+                </div>
+            {% elif related_scripts.type == 'SV' %}
+                <div class="col">
+                    <div class="card bg-warning mb-3 mx-1" style="max-width: 40rem;">
+                        <div class="card-header text-white bg-secondary ">
+                            <h4 class="card-title">{{ related_scripts.title }}</h4>
+                        </div>
+                        <div class="card-body bg-warning">
+                            <p class="card-text copy-clipboard">
+                                <code
+                                        class="text-white">{{ related_scripts.script }}</code>
+                                <button title="Скопировать"
+                                        class="btn btn-outline-secondary btn-sm shadow-none mt-3 bg-light">Копировать
+                                </button>
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <u class="text-white">{{ related_scripts.operation }}</u>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="col">
+                    <div class="card bg-danger mb-3 mx-1" style="max-width: 40rem;">
+                        <div class="card-header text-white bg-secondary ">
+                            <h4 class="card-title">{{ related_scripts.title }}</h4>
+                        </div>
+                        <div class="card-body bg-danger">
+                            <p class="card-text copy-clipboard">
+                                <code
+                                        class="text-white">{{ related_scripts.script }}</code>
+                                <button title="Скопировать"
+                                        class="btn btn-outline-secondary btn-sm shadow-none mt-3 bg-light">Копировать
+                                </button>
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <u class="text-white">{{ related_scripts.operation }}</u>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <p>Скриптов нет</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru" data-bs-theme=dark>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Авторизация</title>
+    <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
+    <link href="{% static "css/style.css" %}" rel="stylesheet">
+</head>
+<body>
+<section class="info">
+    <div class="container">
+        <div class="row text-center mt-5">
+            <h3>Добро пожаловать на сайт!</h3>
+            <h4>Пожалуйста, введите логин и пароль для доступа к сайту</h4>
+        </div>
+    </div>
+</section>
+<section class="login">
+    <div class="container text-center mt-5">
+        <div class="row justify-content-center">
+
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <form action="." method="post" class="form">
+                    {% csrf_token %}
+                    {{ form }}
+                    <button type="submit" class="btn btn-primary mt-3">Отправить</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>
+<script src={% static "js/bootstrap.bundle.js" %}></script>
+<script src={% static "js/main.js" %}></script>
+</body>
+</html>
+
+
+
+

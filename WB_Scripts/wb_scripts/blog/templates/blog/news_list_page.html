@@ -1,0 +1,55 @@
+{% extends "blog/base.html" %}
+{% block title %}Новости{% endblock %}
+{% block content %}
+    <section class="news-list">
+        <div class="container">
+            <h3 class="mt-3">Новости
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#CreateNews">
+                    Добавить новость!
+                </button>
+            </h3>
+            <div class="row">
+                {% for news in news_list %}
+                    <div class="col-lg-9 col-sm-12">
+                        <h4>
+                            <a href="{{ news.get_absolute_url }}">
+                                {{ news.title }}
+                            </a>
+                        </h4>
+                        <p class="date">Опубликовано: {{ news.publish }}
+                            <br>
+                            Обновлено: {{ news.updated }}
+                            <br>
+                            Просмотров: {{ news.view_count }}</p>
+
+                        <p>{{ news.body| safe | truncatewords:250 | linebreaks }}</p>
+                    </div>
+                {% endfor %}
+                <div class="ol-lg-3 col-sm-12">
+                    {% include "blog/pagination.html" with page=news_list %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="CreateNews" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Добавить новость</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="." method="post" class="form">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                            <button type="submit" class="btn btn-primary">Отправить</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

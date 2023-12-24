@@ -1,0 +1,13 @@
+{% block recently_visited %}
+    {% for recently_post in recently_viewed_posts_list %}
+        <div class="col-12 col-sm-12">
+            <h4>
+                <a href="{{ recently_post.post.get_absolute_url }}">
+                    {{ recently_post.post.title }}
+                </a>
+            </h4>
+
+            <p class="date">Последние просмотр: {{ recently_post.date_visit }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% block most_viewed %}
+    {% for viewed_posts in most_viewed_posts %}
+        <div class="col-12 col-sm-12">
+            <h4>
+                <a href="{{ viewed_posts.get_absolute_url }}">
+                    {{ viewed_posts.title }}
+                </a>
+            </h4>
+
+            <p class="date">Просмотров: {{ viewed_posts.view_count }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

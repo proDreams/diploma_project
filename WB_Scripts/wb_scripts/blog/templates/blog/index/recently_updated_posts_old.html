@@ -1,0 +1,21 @@
+{% block recently_updated %}
+    <h2 class="mb-3">Последние обновлённые материалы</h2>
+    {% for recently_post in recently_upd_posts_list %}
+        <div class="col-lg-3 col-sm-12">
+            <h3>
+                <a href="{{ recently_post.get_absolute_url }}">
+                    {{ recently_post.title }}
+                </a>
+            </h3>
+
+            {% if recently_post.updated > recently_post.created %}
+                <p class="date">Обновлён: {{ recently_post.updated }}</p>
+            {% else %}
+                <p class="date">Добавлен: {{ recently_post.created }}</p>
+            {% endif %}
+
+            {{ recently_post.body|truncatewords:30 }}
+        </div>
+    {% endfor %}
+{% endblock %}
+

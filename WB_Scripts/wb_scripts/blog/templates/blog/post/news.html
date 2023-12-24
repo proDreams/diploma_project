@@ -1,0 +1,17 @@
+{% block news %}
+    {% if related_news_list %}
+        {% for related_news in related_news_list %}
+            <h2 class="mb-3"><a href="{{ related_news.news.get_absolute_url }}">
+                {{ related_news.news.title }}</a></h2>
+            <p>Опубликовано: {{ related_news.news.publish }}</p>
+            <p>Обновлено: {{ related_news.news.updated }}</p>
+            <p>{{ related_news.news.body | safe | truncatewords:30 }}</p>
+            <div class="col-12 line"></div>
+        {% endfor %}
+        <div class="col-12 mt-3">
+            {% include "blog/pagination.html" with page=related_news_list %}
+        </div>
+    {% else %}
+        <p>Новостей нет</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "blog/base.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+    <section class="categories">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-sm-12 cat-block">
+                    <div class="row">
+                        <h2 class="mb-3">{{ title }}</h2>
+                        <div class="col-lg-12">
+                            {% if title.parent %}
+                                <h5><a href={{ title.parent.get_absolute_url }}>Вернуться назад</a></h5>
+                            {% endif %}
+                        </div>
+                    {% if sub_category_list %}
+                        {% for category in sub_category_list %}
+                            <div class="col-lg-12">
+                                <h5><a href={{ category.get_absolute_url }}>{{ category.title }}</a></h5>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                    <h4>Нет подкатегорий</h4>
+                    {% endif %}
+                    </div>
+                </div>
+                <div class="col-lg-9 col-sm-12">
+                    <div class="row">
+                        <h2 class="mb-3">Материалы</h2>
+                        <div class="row row-cols-sm-1 g-0">
+                            {% block post_list %}
+                                {% include "blog/category_page/post_list.html" %}
+                            {% endblock %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    {% include "blog/pagination.html" with page=posts_list %}
+                </div>
+                {#                <div class="col-12 line"></div>#}
+            </div>
+        </div>
+    </section>
+{% endblock %}
